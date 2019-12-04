@@ -1,8 +1,10 @@
 from node import Node
 
 class Stack:
-    def __init__(self):
+    def __init__(self, limit=1000):
         self.top_item = None
+        self.limit = limit
+        self.size = 0
 
     def peek(self):
         return self.top_item.get_value()
