@@ -11,9 +11,13 @@ class Stack:
             return self.top_item.get_value()
 
     def push(self, value):
-        item = Node(value)
-        item.set_next_node(self.top_item)
-        self.top_item = item
+        if self.has_space():
+            item = Node(value)
+            item.set_next_node(self.top_item)
+            self.top_item = item
+            self.size += 1
+        else:
+            print("The stack is full, you cannot add anymore Nodes.")
 
     def pop(self):
         if self.size > 0:
@@ -21,3 +25,6 @@ class Stack:
             self.top_item = item_to_remove.get_next_node()
             self.size -= 1
             return item_to_remove.get_value()
+
+    def has_space(self):
+        return self.limit > self.size
