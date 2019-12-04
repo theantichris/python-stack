@@ -7,7 +7,8 @@ class Stack:
         self.size = 0
 
     def peek(self):
-        return self.top_item.get_value()
+        if self.size > 0:
+            return self.top_item.get_value()
 
     def push(self, value):
         item = Node(value)
@@ -15,6 +16,7 @@ class Stack:
         self.top_item = item
 
     def pop(self):
-        item_to_remove = self.top_item
-        self.top_item = item_to_remove.get_next_node()
-        return item_to_remove.get_value()
+        if self.size > 0:
+            item_to_remove = self.top_item
+            self.top_item = item_to_remove.get_next_node()
+            return item_to_remove.get_value()
